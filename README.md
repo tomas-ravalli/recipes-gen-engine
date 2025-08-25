@@ -1,12 +1,13 @@
-![My Cover](./assets/nbr-cover.png)
+![My Cover](./assets/cover-image.png)
 
-# Next Best Recipe for Campaign Optimization
+# GenAI for Recipe-to-Image Creation at Scale
 
 <p align="left">
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
 </p>
 
-> An AI-driven system that identifies trending recipe content to enhance campaign planning and performance for Nestlé brands. **Objective:** To provide data-driven insights into emerging recipe preferences, enabling the promotion of popular and relevant recipes to the right audience at the optimal time for improved consumer engagement and marketing results.
+> An AI-powered system to generate high-quality, on-brand food images directly from recipe text.
+> **Objective:** To replace the costly and time-consuming process of traditional food photography with a scalable, automated, and cost-effective AI solution for a top CPG brand's global recipe platform.
 
 ### Outline
 
@@ -16,100 +17,179 @@
 - [Dataset](#dataset)
 - [Modeling](#modeling)
 - [Usage](#usage)
+- [Structure](#structure)
+
 ---
 
 ## Key Results
 
-| Metric | Result (Pilot Program) | Description |
-| :--- | :--- | :--- |
-| 🎯 **Engagement Uplift** | **+18.5%** (95% CI: 14.2%–22.8%) | Search campaigns using NBR-recommended recipes saw a significant lift in user engagement (clicks, time on page) compared to the control group. |
-| 💰 **Efficiency Gain** | **-12% CPC** | The higher relevance of the selected recipes and ad copy led to a 12% reduction in average Cost-Per-Click (CPC) in paid search activations. |
-| 📈 **Trend Identification** | **Spotted "Keto Desserts" trend 4 weeks early** | The model identified a surge in interest for "Keto Desserts," allowing the brand to promote relevant recipes weeks before the trend reached its peak. |
-| 📊 **Promotional Shift** | **25% content shift** | Insights from the dashboard led to a strategic decision to reallocate 25% of promotional content from generic recipes to trending seasonal and dietary categories. |
+| Metric                      | Result                               | Description |
+| :-------------------------- | :----------------------------------- | :----------------------------------- |
+| 💰 Cost Reduction         | **~$12M/year** Potential Savings     | Projected annual savings by eliminating the need for traditional photoshoots for the company's vast recipe database. |
+| ⚙️ Operational Efficiency   | **From weeks to seconds** per image | Drastically streamlined the content creation pipeline, enabling the generation of stunning visuals for any recipe on-demand. |
+| ✨ Brand Personalization | **High-fidelity style replication** | Successfully mimicked specific market and brand photographic styles using LoRA fine-tuning with as few as 18 source images. |
+| 🎯 Content Accuracy | **Recipe-aware image generation** | Moved beyond generic images by synthesizing prompts from ingredients and steps, ensuring visuals accurately represent the final dish. |
 
 
 ## Overview
 
-In a constantly changing culinary environment, Nestlé markets aim to connect with consumers by providing relevant and appealing recipe content. The challenge is to identify which recipes are gaining popularity and will resonate most effectively with audiences. Manually tracking these trends is difficult and often subjective.
+For any major CPG company, managing a vast, global database of recipes like a Smart Recipe Hub (SRH) presents a significant content challenge. Traditionally, creating appealing food photography for each recipe is a slow, expensive, and logistically complex process. The core challenge was to leverage Generative AI to automate this workflow, creating a tool that could generate high-quality, appealing, and–most importantly–accurate images that reflect the specific ingredients and style of each recipe.
 
-This project, "Next Best Recipe" (NBR), addresses this by creating an AI-powered tool that analyzes data from multiple sources to identify and rank trending recipes. By leveraging these insights, marketing teams can enhance campaign planning, create more effective content, and activate paid media with more precision, ultimately leading to better engagement and an improved consumer experience.
+This project explored using a combination of powerful language models (like GPT-3) and image generation models (Stable Diffusion) to achieve this, proving the potential to transform the content creation lifecycle.
 
 <p align="center">
-  <img src="./assets/nbr-dashboard.png" alt="NBR Dashboard" width="750">
+  <img src="./assets/shrimp-comparison.png" alt="Comparison of prompt engineering for a shrimp dish" width="1000">
   <br>
-  <em>Fig. 1: The NBR Dashboard provides a centralized view for trend analysis and recipe selection.</em>
+  <em>Fig. 1: An example of how prompt refinement improves image accuracy and quality.</em>
 </p>
+
+The following table maps the primary pain points of the traditional photography process to the solutions developed in this AI-driven approach:
+
+| 🚩 The Problem | 💡 The Solution |
+| :--------------------------- | :---------------------------- |
+| **High cost & scalability issues**: Professional photoshoots are expensive and difficult to scale across thousands of recipes and markets. | **Cost-effective generation**: Produces images at a fraction of the cost, making it feasible to have a unique image for every single recipe. |
+| **Generic or inaccurate visuals**: Stock photos often don't match the actual ingredients or final look of a recipe. | **Intelligent prompt engineering**: Uses LLMs to analyze recipe data (ingredients, steps, weights) to create detailed prompts for accurate visual representation. |
+| **Brand inconsistency**: Different markets have unique photographic styles that are hard to maintain globally. | **Style transfer & fine-tuning**: Employs techniques like LoRA to train the model on specific brand styles, ensuring visual consistency and brand alignment. |
+| **Slow content pipeline**: The time from recipe creation to having a usable image can take weeks or months. | **On-demand image creation**: Generates high-resolution images in seconds, enabling rapid content deployment and personalization. |
 
 
 ## Architecture
 
-The NBR system is an end-to-end analytics pipeline that ingests data from various sources, processes it through a central AI engine, and delivers actionable insights via a user-facing dashboard and an API. This allows for seamless integration into campaign planning and activation workflows.
+The system is designed as a two-stage pipeline that intelligently translates raw recipe data into a final, stylized image. It creates a powerful synergy between Large Language Models (for understanding and description) and Diffusion Models (for visual creation).
 
 <p align="center">
-  <img src="./assets/nbr-scd.png" alt="Next Best Recipe Architecture" width="1000">
+  <img src="./assets/architecture-flow.png" alt="System Architecture Diagram" width="800">
   <br>
-  <em>Fig. 2: [System Context Diagram] Next Best Recipe</em>
+  <em>Fig. 2: A simplified diagram of the Text-to-Image Generation Pipeline.</em>
 </p>
 
-[cite_start]The data pipeline collects recipe metadata, social trend data, and website engagement metrics into a central AI data store[cite: 7]. [cite_start]A predictive model then analyzes this data to enrich the recipe content with trend scores[cite: 750]. [cite_start]The results are surfaced through two primary outputs: the NBR Dashboard for strategic planning and an API for direct integration with activation platforms[cite: 14, 751].
-
+### System Synergy
+The effectiveness of this system relies on the interplay between its two core components:
+1.  **Prompt Synthesis Engine (GPT-3):** This engine acts as the "creative director." It ingests structured recipe data and transforms it into a rich, descriptive prompt. It intelligently identifies the most visually important ingredients, determines their final state in the dish (e.g., "mashed," "browned"), and structures the prompt with weights to guide the image model.
+2.  **Image Generation Engine (Stable Diffusion + LoRA):** This engine is the "photographer." It takes the detailed prompt and renders the final image. By using fine-tuned LoRA weights, it can apply a specific, pre-learned photographic style (e.g., camera angles, lighting, backgrounds) associated with a particular brand or market, ensuring the output is not just accurate but also on-brand.
 
 ## Dataset
 
-The project integrates first-party and third-party data sources to build a comprehensive view of recipe performance and trends.
+The model's input is derived from a structured recipe database. The goal is to select and transform fields from this database into a text prompt that is both descriptive and concise, avoiding noisy or irrelevant information.
 
-### Features
+| Category | Features | Description |
+| :--- | :--- | :--- |
+| **Recipe Metadata** | `recipe name`, `recipe description`, `course tags`, `cuisine tags`, `occasion tags` | High-level contextual information used to frame the dish (e.g., "Main dish", "Asian-style", "Chinese New Year"). |
+| **Core Components** | `ingredients list`, `ingredient weights` | A list of all ingredients and their respective quantities. Weights are used to determine visual prominence in the final prompt. |
+| **Preparation Details** | `step descriptions` | The cooking instructions. This data is processed by an LLM to infer the final state of key ingredients. |
 
-| Primary Category | Data Source | Specific Features / Metrics |
-| :--------------- | :------------------ | :------------------------------------------------------ |
-| **Recipe Metadata** | Smart Recipe Hub (SRH) | [cite_start]Recipe ID, Name, Description, Tags, Nutritional Score [cite: 31, 761] |
-| **Social Trends** | Tastewise | [cite_start]Weighted Trending Score, Engagements, Month-on-Month Growth [cite: 22, 172, 681] |
-| **Website Performance** | Google Analytics | Page Views, Clicks, Bounce Rate, Sessions, Avg. [cite_start]Time on Page [cite: 22, 228, 758] |
-| **Website Performance** | Brand Websites | [cite_start]Web Growth (Overall & Earned) [cite: 174, 176, 684, 686] |
-
-[cite_start]The core objective is to use a combination of these features to rank recipes based on their current and predicted popularity[cite: 9, 23]. [cite_start]Key metrics like `Tastewise Weighted Growth` and `Web Growth Earned` are used as primary indicators[cite: 521].
+> The final, **generated text prompt** is the key input for the image model. It's an engineered artifact, not a simple field, that combines elements from all categories above.
 
 ## Modeling
 
-[cite_start]The core of the system is a predictive AI engine hosted on Google Cloud Platform that connects social trends to Nestlé's internal recipe database[cite: 749].
+We engineered a multi-stage system to solve the image generation problem, progressively adding layers of sophistication to move from generic images to highly specific, stylized, and accurate representations.
+- Stage 1: **Foundational Prompt Engineering**
+- Stage 2: **LLM-Powered Prompt Synthesis**
+- Stage 3: **Style-Aware Fine-Tuning**
 
-- [cite_start]**Semantic Linking**: The model uses a semantic understanding of recipes from the Smart Recipe Hub (SRH) to link them to relevant social trends identified in the Tastewise data[cite: 222]. [cite_start]This allows the system to predict the potential social performance of a Nestlé recipe even if it hasn't been actively promoted[cite: 210, 233].
-- [cite_start]**Trend Qualification**: To provide a holistic view, the model combines social trend signals with actual website engagement metrics (e.g., page views, time on page)[cite: 211]. This ensures that recommendations are backed by both external popularity and internal performance data.
-- [cite_start]**Algorithmic Ranking**: The system generates a ranked list of recipes based on various metrics, which can be sorted by users in the dashboard[cite: 13, 235]. This allows for quick identification of top-performing and high-potential recipe content.
+<p align="left">
+  <img src="./assets/model-stages.png" alt="Modeling Stages" width="275">
+  <br>
+  <em>Fig. 3: The layered modeling approach.</em>
+</p>
 
-| Component | Description | Toolkit |
-| :--- | :--- | :--- |
-| **AI Data Store** | [cite_start]A centralized repository on Google Cloud Platform that ingests and integrates data from SRH, Tastewise, and Google Analytics[cite: 7, 24, 748]. | `Google Cloud Platform` |
-| **Predictive Model** | [cite_start]An AI engine that links recipe metadata to social trends and website engagement data to predict performance and identify trending content[cite: 222, 749]. | `AI Engine` |
-| **Insight Delivery** | [cite_start]A user-facing dashboard for interactive analysis and an API feed for integration with other marketing activation platforms[cite: 19, 30, 751]. | `Dashboard`, `API` |
-| **Generative AI (PoC)**| [cite_start]A related proof-of-concept explores using Generative AI (Stable Diffusion, GPT-3) to create high-quality food images directly from recipe text, potentially reducing content creation costs[cite: 49, 58].| `Stable Diffusion`, `GPT-3` |
+### Stage 1: Foundational Prompt Engineering
+
+This initial stage established the baseline for quality by enhancing simple prompts (e.g., just the recipe title) with standard techniques. This answers the question: *"How can we ensure a baseline level of photographic quality?"*
+
+| Aspect | Description |
+| :--- | :--- |
+| **Style Prompts** | Appending phrases like `"food photographic style"`, `"high resolution"`, or `"highly detailed"` to the prompt to significantly improve the aesthetic quality and realism of the output. |
+| **Negative Prompts**| Specifying terms to exclude from the image, such as `"text"`, `"cutlery"`, `"hand"`, `"blurry"`, or `"cropped"`. This helps avoid common AI artifacts and unwanted elements. |
+| **Contextual Tags**| Including metadata tags (e.g., cuisine, occasion) to provide the model with more context, leading to more relevant, though still generic, imagery. |
+
+### Stage 2: LLM-Powered Prompt Synthesis
+
+This stage addressed the challenge of making the images *faithful* to the specific recipe, not just a generic version of the dish. This answers the question: *"How do we make the image accurately represent **our** specific recipe?"*
+
+| Aspect | Description |
+| :--- | :--- |
+| **Model** | An intelligent pipeline using a Large Language Model (**GPT-3**) to process recipe data. |
+| **Rationale** | Simply adding all ingredients and steps to a prompt is ineffective due to word limits and noise. An LLM can **synthesize** this information into a concise and effective prompt. |
+| **Process** | The process involves two key steps: 1. **Ingredient Weighting**: Prioritizing ingredients with a higher weight/presence in the recipe to focus on what's visually important. 2. **Final State Analysis**: Using the LLM to analyze the recipe steps and determine the final appearance of an ingredient (e.g., a potato becomes "mashed and integrated" in a soup). |
+| **Output**| A structured, weighted prompt that tells the image model not only *what* to include, but how important each element is. For example: `(The final state of the shrimp is that it is cooked. :0.75)`. |
+
+<details>
+<summary><b>Click to see an example of a synthesized prompt</b></summary>
+</br>
+
+For a recipe for "Oriental shrimp," the system transformed the raw data into the following detailed prompt, which resulted in a much more accurate image where soy sauce was visible and extraneous ingredients like noodles were removed.
+
+**Raw Input Data:**
+- **Ingredients:** `["Shrimps", "MAGGI Soy Sauce", "Tomato sauce", "Olive oil", "Onion", ...]`
+- **Weights:** `[125.0, 15.0, 11.25, 7.5, 5.0, ...]`
+- **Steps:** `["Marinate the shrimp with 2 tablespoons of MAGGI Soy Sauce", ...]`
+
+**Generated Prompt:**
+Oriental shrimp.
+(The final state of the shrimp is that it is cooked. :0.75).
+(Soy Sauce is used in the recipe. :0.09).
+(Onion is browned.:0.03).
+(Sugar is in the final state of the recipe. :0.01).
+Food photographic style.
+
+</details>
+
+### Stage 3: Style-Aware Fine-Tuning
+
+This final stage addresses the business need for brand consistency. This answers the question: *"How do we make the image look like it was taken by **our** photographers?"*
+
+| Aspect | Description |
+| :--- | :--- |
+| **Model** | A fine-tuning technique known as **LoRA** (Low-Rank Adaptation). |
+| **Rationale** | LoRA allows for efficient fine-tuning of a large diffusion model on a small set of style examples. It trains only a tiny fraction of the model's weights, which is much faster and cheaper than full retraining. |
+| **Process** | The system was fine-tuned on a small dataset (e.g., 18 images) from a specific brand. At generation time, these learned LoRA weights are applied, influencing the output to match the target style, including elements like lighting, composition, and textures (e.g., "texture of the table and the wooden board"). |
+| **Application** | This allows for the creation of different "style models" for each market or brand, which can be easily applied during image generation to ensure a consistent and recognizable brand aesthetic. |
 
 ## Usage
 
-[cite_start]The primary application of the NBR blueprint is to support data-driven decision-making in marketing campaigns[cite: 9]. [cite_start]The tool is designed to be used by media planners and activation teams to identify the best content to promote[cite: 166].
+The system is designed to be integrated into a content management platform, like a central recipe hub, to provide an automated "virtual photographer" on demand. The workflow is designed for simplicity and scalability.
 
-### 🧪 A/B Testing & Campaign Activation
+### End-to-End Workflow
 
-[cite_start]The system's effectiveness is designed to be validated through structured A/B testing[cite: 34, 836]. [cite_start]A proposed pilot test compares the standard campaign process against a process informed by the NBR dashboard[cite: 814, 816].
+1.  **Recipe Selection**: A content manager or marketeer selects a recipe from the database that needs an image.
+2.  **Style Selection**: The user selects the target visual style from a library of pre-trained LoRA models (e.g., "Winiary - Poland Style," "Buitoni - Italy Style").
+3.  **Automated Generation**:
+    * The system retrieves the recipe's structured data.
+    * The **Prompt Synthesis Engine** (Stage 2) generates the detailed, weighted text prompt.
+    * The **Image Generation Engine** (Stage 3) uses the prompt and the selected LoRA style model to render several image variations.
+4.  **Review and Use**: The user reviews the generated options and selects the best one for immediate use, reducing the entire creative process to minutes.
 
-* [cite_start]**Control Group (Standard Process):** The agency team builds search campaigns, including keywords and ad copy, based on the standard process for recipe content selection[cite: 817, 818, 819, 820, 822].
+This workflow transforms a major operational bottleneck into a streamlined, creative-support tool, empowering marketing teams to generate high-quality, on-brand content with unprecedented speed and efficiency.
 
-* **Test Group (NBR Dashboard):**
-    * [cite_start]**Content Selection:** The agency and Nestlé teams use the NBR dashboard to identify a trending recipe to promote[cite: 825].
-    * [cite_start]**Campaign Build:** The team builds the search campaign, with keywords and ad copy directly informed by the insights and data from the selected trending recipe[cite: 826].
-    * [cite_start]**Optimization:** The team reviews the dashboard weekly to identify new trends and update the campaigns accordingly, creating a more agile activation process[cite: 828].
 
-[cite_start]The hypothesis is that using the dashboard to select content and inform ad copy will yield better engagement than the manual selection process[cite: 824].
+## Structure
 
-### 🎯 Dashboard Interaction
+While most of the source code for this project is private, this section outlines a representative structure for this kind of Generative AI project.
 
-[cite_start]The dashboard is the primary interface for users and allows for a dynamic exploration of recipe trends[cite: 167, 232].
-
-* [cite_start]**Filtering:** Users can filter the entire dataset by `Market`, `Brand`, `Language`, `Recipe`, `Description`, and `Tags` to narrow down insights to their specific area of focus[cite: 21, 227, 392].
-
-* [cite_start]**Ranking & Analysis:** Once a filter is applied, users can see a list of "Growing Nestlé Recipes" and rank the results by `Tastewise Weighted Growth`, `GA4 Web Growth`, or `GA4 Web Earned Growth` to quickly identify top performers[cite: 229, 521].
-
-* **Deep-Dive:** By selecting a specific recipe from the list, users can view detailed social and website engagement metrics, including `Recipe Sessions`, `Recipe Views`, `Clicks`, and `Avg. [cite_start]Time on Page`, to further validate its trend potential[cite: 469, 559]. [cite_start]The dashboard also pulls in recipe images and descriptions directly from the Smart Recipe Hub for an all-in-one view[cite: 236, 645].
+```bash
+Generative-Food-Photography/
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── config.py
+├── assets/                          # (Public) Diagrams and images for documentation.
+├── data/
+│   └── recipe_database.csv          # (Private) Example structured recipe data.
+├── models/
+│   └── lora_weights/                 # (Private) Stores trained LoRA model files.
+│       ├── buitoni_style.safetensors
+│       └── winiary_style.safetensors
+├── notebooks/                       # (Private) Jupyter notebooks for R&D.
+│   ├── 01_prompt_engineering_tests.ipynb
+│   ├── 02_lora_fine_tuning.ipynb
+└── src/
+    ├── __init__.py
+    ├── prompt_synthesis/            # (Private) Scripts for LLM-based prompt generation.
+    │   └── generator.py
+    └── image_generation/            # (Private) Scripts for image generation and style application.
+        └── pipeline.py
 
 </br>
 
