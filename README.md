@@ -168,7 +168,7 @@ This workflow transforms a major operational bottleneck into a streamlined, crea
 While most of the source code for this project is private, this section outlines a representative structure for this kind of Generative AI project.
 
 ```bash
-Generative-Food-Photography/
+/
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -190,6 +190,7 @@ Generative-Food-Photography/
     │   └── generator.py
     └── image_generation/            # (Private) Scripts for image generation and style application.
         └── pipeline.py
+```
 
 </br>
 
