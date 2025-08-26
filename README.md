@@ -25,7 +25,7 @@
 
 | Metric                      | Result                               | Description |
 | :-------------------------- | :----------------------------------- | :----------------------------------- |
-| 💰 Cost Reduction         | **~$12M/year** Potential Savings     | Projected annual savings by eliminating the need for traditional photoshoots for the company's vast recipe database. |
+| 💰 Cost Reduction         | **~$12M/year** potential savings     | Projected annual savings by eliminating the need for traditional photoshoots for the company's vast recipe database. |
 | ⚙️ Operational Efficiency   | **From weeks to seconds** per image | Drastically streamlined the content creation pipeline, enabling the generation of stunning visuals for any recipe on-demand. |
 | ✨ Brand Personalization | **High-fidelity style replication** | Successfully mimicked specific market and brand photographic styles using LoRA fine-tuning with as few as 18 source images. |
 | 🎯 Content Accuracy | **Recipe-aware image generation** | Moved beyond generic images by synthesizing prompts from ingredients and steps, ensuring visuals accurately represent the final dish. |
@@ -33,9 +33,9 @@
 
 ## Overview
 
-For any major CPG company, managing a vast, global database of recipes like a Smart Recipe Hub (SRH) presents a significant content challenge. Traditionally, creating appealing food photography for each recipe is a slow, expensive, and logistically complex process. The core challenge was to leverage Generative AI to automate this workflow, creating a tool that could generate high-quality, appealing, and–most importantly–accurate images that reflect the specific ingredients and style of each recipe.
+For any major CPG company, managing a vast, global database of recipes presents a significant content challenge. Traditionally, creating appealing food photography for each recipe is a slow, expensive, and logistically complex process. The core challenge was to leverage Generative AI to automate this workflow, creating a tool that could generate high-quality, appealing, and (most importantly) accurate images that reflect the specific ingredients and style of each recipe.
 
-This project explored using a combination of powerful language models (like GPT-3) and image generation models (Stable Diffusion) to achieve this, proving the potential to transform the content creation lifecycle.
+This project explored using a combination of powerful language models (like Gemini 2.5) and image generation models (Stable Diffusion) to achieve this, proving the potential to transform the content creation lifecycle.
 
 <p align="center">
   <img src="./assets/shrimp-comparison.png" alt="Comparison of prompt engineering for a shrimp dish" width="1000">
@@ -50,22 +50,22 @@ The following table maps the primary pain points of the traditional photography 
 | **High cost & scalability issues**: Professional photoshoots are expensive and difficult to scale across thousands of recipes and markets. | **Cost-effective generation**: Produces images at a fraction of the cost, making it feasible to have a unique image for every single recipe. |
 | **Generic or inaccurate visuals**: Stock photos often don't match the actual ingredients or final look of a recipe. | **Intelligent prompt engineering**: Uses LLMs to analyze recipe data (ingredients, steps, weights) to create detailed prompts for accurate visual representation. |
 | **Brand inconsistency**: Different markets have unique photographic styles that are hard to maintain globally. | **Style transfer & fine-tuning**: Employs techniques like LoRA to train the model on specific brand styles, ensuring visual consistency and brand alignment. |
-| **Slow content pipeline**: The time from recipe creation to having a usable image can take weeks or months. | **On-demand image creation**: Generates high-resolution images in seconds, enabling rapid content deployment and personalization. |
+| **Slow content pipeline**: The time from recipe creation to having a usable image can take weeks. | **On-demand image creation**: Generates high-resolution images in seconds, enabling rapid content deployment and personalization. |
 
 
 ## Architecture
 
-The system is designed as a two-stage pipeline that intelligently translates raw recipe data into a final, stylized image. It creates a powerful synergy between Large Language Models (for understanding and description) and Diffusion Models (for visual creation).
+The system is designed as a two-stage pipeline that translates raw recipe data into a final, stylized image. It creates a powerful synergy between LLMs (for understanding and description) and Diffusion Models (for visual creation).
 
 <p align="center">
-  <img src="./assets/architecture-flow.png" alt="System Architecture Diagram" width="800">
+  <img src="./assets/r2i-scd.png" alt="System Architecture Diagram" width="800">
   <br>
-  <em>Fig. 2: A simplified diagram of the Text-to-Image Generation Pipeline.</em>
+  <em>Fig. 2: A simplified diagram of the recipe-to-image generation pipeline.</em>
 </p>
 
 ### System Synergy
 The effectiveness of this system relies on the interplay between its two core components:
-1.  **Prompt Synthesis Engine (GPT-3):** This engine acts as the "creative director." It ingests structured recipe data and transforms it into a rich, descriptive prompt. It intelligently identifies the most visually important ingredients, determines their final state in the dish (e.g., "mashed," "browned"), and structures the prompt with weights to guide the image model.
+1.  **Prompt Synthesis Engine (Gemini 2.5):** This engine acts as the "creative director." It ingests structured recipe data and transforms it into a rich, descriptive prompt. It intelligently identifies the most visually important ingredients, determines their final state in the dish (e.g., "mashed," "browned"), and structures the prompt with weights to guide the image model.
 2.  **Image Generation Engine (Stable Diffusion + LoRA):** This engine is the "photographer." It takes the detailed prompt and renders the final image. By using fine-tuned LoRA weights, it can apply a specific, pre-learned photographic style (e.g., camera angles, lighting, backgrounds) associated with a particular brand or market, ensuring the output is not just accurate but also on-brand.
 
 ## Dataset
@@ -109,7 +109,7 @@ This stage addressed the challenge of making the images *faithful* to the specif
 
 | Aspect | Description |
 | :--- | :--- |
-| **Model** | An intelligent pipeline using a Large Language Model (**GPT-3**) to process recipe data. |
+| **Model** | An intelligent pipeline using a Large Language Model (**Gemini 2.5**) to process recipe data. |
 | **Rationale** | Simply adding all ingredients and steps to a prompt is ineffective due to word limits and noise. An LLM can **synthesize** this information into a concise and effective prompt. |
 | **Process** | The process involves two key steps: 1. **Ingredient Weighting**: Prioritizing ingredients with a higher weight/presence in the recipe to focus on what's visually important. 2. **Final State Analysis**: Using the LLM to analyze the recipe steps and determine the final appearance of an ingredient (e.g., a potato becomes "mashed and integrated" in a soup). |
 | **Output**| A structured, weighted prompt that tells the image model not only *what* to include, but how important each element is. For example: `(The final state of the shrimp is that it is cooked. :0.75)`. |
