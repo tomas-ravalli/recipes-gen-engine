@@ -6,8 +6,7 @@
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
 </p>
 
-> An AI-powered system to optimize product recipes and generate high-quality, on-brand food images.
-> **Objective:** To reduce concept-to-testing time by identifying optimal ingredient combinations and replace traditional food photography with a scalable, automated AI solution for a top CPG brand's global recipe platform.
+> An AI-powered system to optimize product recipes and generate high-quality, on-brand food images. **Objective:** To reduce concept-to-testing time by identifying optimal ingredient combinations and replace traditional food photography with a scalable, automated AI solution for a top CPG brand's global recipe platform.
 
 ### Outline
 
@@ -33,25 +32,9 @@
 
 ## Overview
 
-For any major CPG company, innovating and managing a vast, global database of recipes presents significant challenges. The process is twofold: first, identifying new recipe concepts that will resonate with consumers, and second, creating appealing photography for each recipe, which is traditionally slow and expensive.
+The Recipe Optimizer is an innovative tool that helps markets and brands enhance their campaign planning, activation, and insights with the help of AI-powered decision-making. The AI store of Recipes gathers information from propietary recipes database, Tastewise (trending recipes), and market websites to offer insights into the latest and upcoming trending Recipe content. This allows brands to provide their consumers with relevant and useful recipe content for an improved experience.
 
-This project leverages Generative AI to tackle both challenges. It's a system that not only generates images but first **optimizes the recipes themselves**. By ingesting data from **external sources (Google Trends, Pinterest API)** and **internal sources (Google Analytics)**, the system identifies trending ingredients and successful historical combinations. This data-driven approach informs the creation of optimized recipes, which then feed into an image generation pipeline to produce accurate, on-brand visuals at scale.
-
-<p align="center">
-  <img src="./assets/shrimp-comparison.png" alt="Comparison of prompt engineering for a shrimp dish" width="1000">
-  <br>
-  <em>Fig. 1: An example of how prompt refinement, informed by recipe data, improves image accuracy and quality.</em>
-</p>
-
-The following table maps the primary pain points of the traditional R&D and photography process to the solutions developed in this AI-driven approach:
-
-| 🚩 The Problem | 💡 The Solution |
-| :--------------------------- | :---------------------------- |
-| **Slow R&D and market insight**: Identifying trending ingredients and successful recipe concepts is a manual, time-consuming process. | **Automated Trend Analysis**: Ingests real-time market data (Google Trends, Pinterest) and internal performance data to identify high-potential ingredient combinations. |
-| **High cost & scalability issues**: Professional photoshoots are expensive and difficult to scale across thousands of recipes and markets. | **Cost-effective generation**: Produces images at a fraction of the cost, making it feasible to have a unique image for every single recipe. |
-| **Generic or inaccurate visuals**: Stock photos often don't match the actual ingredients or final look of a recipe. | **Intelligent prompt engineering**: Uses LLMs to analyze optimized recipe data to create detailed prompts for accurate visual representation. |
-| **Brand inconsistency**: Different markets have unique photographic styles that are hard to maintain globally. | **Style transfer & fine-tuning**: Employs techniques like LoRA to train the model on specific brand styles, ensuring visual consistency and brand alignment. |
-
+The Recipe AI Data Store enhances the recipes database by utilizing both first and third-party data to create recipe trends insights. This enables to rank recipes based on trending data for a specific brand and market, which can be used to inform targeting and creation. For instance, if we look at Oatmeal cookies, we will get an overview of trend scores in Tastewise and growth on Earned. Thereby we can identify whether there is an opportunity in promoting and craeting content for Oatmeal cookies in a specific market.
 
 ## Architecture
 
@@ -63,19 +46,13 @@ The system is designed as a multi-stage pipeline that first analyzes data to opt
   <em>Fig. 2: A simplified diagram of the data analysis, recipe optimization, and image generation pipeline.</em>
 </p>
 
-### System Synergy
-The effectiveness of this system relies on the interplay between its core components:
-1. **Data Ingestion & Trend Analysis Engine**: This is the "market analyst." It pulls data from external APIs (Google Trends, Pinterest) and internal analytics to identify trending ingredients and flavor pairings. It provides the foundational insights for recipe optimization.
-2.  **Prompt Synthesis Engine (Gemini 2.5):** This engine acts as the "creative director." It ingests the optimized recipe data and transforms it into a rich, descriptive prompt. It intelligently identifies the most visually important ingredients and structures the prompt to guide the image model.
-3.  **Image Generation Engine (Stable Diffusion + LoRA):** This engine is the "photographer." It takes the detailed prompt and renders the final image, applying a specific, pre-learned photographic style (e.g., camera angles, lighting) to ensure the output is not just accurate but also on-brand.
-
 ## Dataset
 
 The model's input is derived from a combination of external trend data, internal performance data, and a structured recipe database.
 
 | Category | Features | Description |
 | :--- | :--- | :--- |
-| **External Trend Data** | `Google Trends queries`, `Pinterest API data` | Provides insight into emerging consumer interests, popular ingredients, and trending cuisines. Used for recipe optimization. |
+| **External Trend Data** | `Tastewise API data` | Provides insight into emerging consumer interests, popular ingredients, and trending cuisines. Used for recipe optimization. |
 | **Internal Performance Data** | `Google Analytics`, `recipe engagement metrics` | Historical data on which recipes have performed well, informing which ingredient combinations are most successful. |
 | **Recipe Metadata** | `recipe name`, `recipe description`, `course tags`, `cuisine tags` | High-level contextual information used to frame the dish (e.g., "Main dish", "Asian-style"). |
 | **Core Components** | `ingredients list`, `ingredient weights` | A list of all ingredients and their respective quantities. This data is optimized based on trend analysis. |
@@ -101,7 +78,7 @@ This foundational stage answers the question: *"What should we make in the first
 
 | Aspect | Description |
 | :--- | :--- |
-| **Data Sources** | Ingests data from **Google Trends**, **Pinterest API**, and internal **Google Analytics**. |
+| **Data Sources** | Ingests data from **Tastewise** and internal **Google Analytics**. |
 | **Process** | The system analyzes this data to identify: 1. **Trending Ingredients**: Which ingredients are seeing a surge in consumer interest. 2. **High-Performing Pairs**: Which ingredient combinations have historically led to high engagement. |
 | **Output**| A set of **optimized ingredient combinations** that are predicted to have a higher consumer preference. This output serves as the basis for the recipe that will be visualized. |
 
@@ -121,7 +98,7 @@ This stage addressed the challenge of making the images *faithful* to the specif
 
 | Aspect | Description |
 | :--- | :--- |
-| **Model** | An intelligent pipeline using a Large Language Model (**Gemini 2.5**) to process the optimized recipe data. |
+| **Model** | A pipeline using **Gemini 2.5** to process the optimized recipe data. |
 | **Process** | The LLM **synthesizes** the recipe information into a concise and effective prompt by: 1. **Ingredient Weighting**: Prioritizing ingredients with a higher weight. 2. **Final State Analysis**: Analyzing the recipe steps to determine the final appearance of an ingredient (e.g., "mashed," "browned"). |
 | **Output**| A structured, weighted prompt that tells the image model not only *what* to include, but how important each element is. |
 
@@ -173,6 +150,9 @@ The system is designed to be integrated into a content management and R&D platfo
 
 This workflow transforms major operational bottlenecks in both R&D and marketing into a streamlined, data-driven process.
 
+The Recipes Optimizer present opportunities for markets to create competitor advantage and strengthen their marketing efforts across the following areas:
+- **Planning Insights**: Use trending data to understand market and cultural shifts in Recipe content
+- **Content Creation**: Tailor creatives in Paid and Owned based on trending insight
 
 ## Structure
 
@@ -210,7 +190,7 @@ While most of the source code for this project is private, this section outlines
 </br>
 
 > [!WARNING]
-This repository provides a high-level demonstration of the project's architecture and methodology. Certain implementation details and model complexities have been simplified for clarity.
+> This repository provides a high-level demonstration of the project's architecture and methodology. Certain implementation details and model complexities have been simplified for clarity.
 
 </br>
 
