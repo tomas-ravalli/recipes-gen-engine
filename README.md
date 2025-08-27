@@ -156,9 +156,9 @@ The system is designed to be integrated into a content management and R&D platfo
 2.  **Recipe Selection & Optimization**: A user selects a concept. The system provides the optimized ingredient list.
 3.  **Style Selection**: The user selects the target visual style from a library of pre-trained LoRA models.
 4.  **Automated Generation**: </br>
-    - The system retrieves the optimized recipe's data.
-    - The **Prompt Synthesis Layer** generates the detailed text prompt.
-    - The **Image Generation Layer** uses the prompt and the selected LoRA style to render image variations.
+    - The system retrieves the optimized recipe's data. </br>
+    - The **Prompt Synthesis Layer** generates the detailed text prompt. </br>
+    - The **Image Generation Layer** uses the prompt and the selected LoRA style to render image variations. </br>
 5.  **Review and Use**: The user reviews the options and selects the best one for immediate use, reducing the entire creative process to minutes.
 
 This workflow transforms major operational bottlenecks in both R&D and marketing into a streamlined, data-driven process.
