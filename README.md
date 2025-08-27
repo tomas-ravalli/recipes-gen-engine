@@ -141,7 +141,7 @@ This final stage addresses the business need for brand consistency. This answers
 | **Application** | This allows for the creation of different "style models" for each market or brand, which can be easily applied during image generation to ensure a consistent brand aesthetic. |
 
 <p align="center">
-  <img src="./assets/r2i-pizzette-lora.png" alt="LoRA Pizzette" width="600">
+  <img src="./assets/r2i-pizzette-lora.png" alt="LoRA Pizzette" width="900">
   <br>
   <em>Fig. 3: Images generated using LoRA fine-tuning on a brand style images.</em>
 </p>
