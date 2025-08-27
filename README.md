@@ -1,6 +1,6 @@
 ![My Cover](./assets/cover-image.png)
 
-# GenAI for Recipe Optimization and Image Creation
+# GenAI for Optimal Recipe Creation at Scale
 
 <p align="left">
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
