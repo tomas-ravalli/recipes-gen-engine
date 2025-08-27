@@ -111,15 +111,15 @@ Below is an **example** of a synthesized prompt.
 For a recipe for "Oriental shrimp," the system transformed the raw data into the following detailed prompt, which resulted in a much more accurate image where soy sauce was visible and extraneous ingredients like noodles were removed.
 
 <p align="center">
-  <img src="./assets/r2i-shrimp-comparison.png" alt="Comparison" width="600">
+  <img src="./assets/r2i-shrimp-comparison.png" alt="Comparison" width="650">
   <br>
   <em>Fig. 2: A comparison between a real photograph and a AI-generated one.</em>
 </p>
 
 **Raw Input Data:**
-- **Ingredients:** `["Shrimps", "MAGGI Soy Sauce", "Tomato sauce", "Olive oil", "Onion", ...]`
+- **Ingredients:** `["Shrimps", "Soy Sauce", "Tomato sauce", "Olive oil", "Onion", ...]`
 - **Weights:** `[125.0, 15.0, 11.25, 7.5, 5.0, ...]`
-- **Steps:** `["Marinate the shrimp with 2 tablespoons of MAGGI Soy Sauce", ...]`
+- **Steps:** `["Marinate the shrimp with 2 tablespoons of Soy Sauce", ...]`
 
 **Generated Prompt:**
 Oriental shrimp.
