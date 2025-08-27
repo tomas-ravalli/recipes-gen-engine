@@ -72,7 +72,7 @@ We engineered a multi-stage system, starting with data analysis to inform recipe
 - Stage 3: **Style Fine-Tuning**
 
 <p align="center">
-  <img src="./assets/r2i-layers.png" alt="Modeling Stages" width="500">
+  <img src="./assets/r2i-layers.png" alt="Modeling Stages" width="350">
   <br>
   <em>Fig. 3: The layered modeling approach.</em>
 </p>
