@@ -25,7 +25,7 @@
 | Metric                      | Result                               | Description |
 | :-------------------------- | :----------------------------------- | :----------------------------------- |
 | 📈 Consumer Preference Lift | **+20% predicted preference** | Identified novel ingredient combinations with a 20% higher predicted consumer preference score by analyzing market and performance data. |
-| 💰 Cost Reduction         | **~$12M/year** potential savings     | Projected annual savings by eliminating the need for traditional photoshoots for the company's vast recipe database. |
+| 💰 Cost Reduction         | **~$2M/year** potential savings     | Projected annual savings by eliminating the need for traditional photoshoots for the company's vast recipe database. |
 | ⚙️ R&D Efficiency   | **From months to days** per concept | Drastically shortened the recipe concept-to-testing cycle by automating trend analysis and ingredient pairing. |
 | ✨ Brand Personalization | **High-fidelity style replication** | Successfully mimicked specific market and brand photographic styles using LoRA fine-tuning with as few as 18 source images. |
 
