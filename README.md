@@ -32,13 +32,17 @@
 
 ## Overview
 
-The Recipe Optimizer is an innovative tool that helps markets and brands enhance their campaign planning, activation, and insights with the help of AI-powered decision-making. The AI store of Recipes gathers information from propietary recipes database, Tastewise (trending recipes), and market websites to offer insights into the latest and upcoming trending Recipe content. This allows brands to provide their consumers with relevant and useful recipe content for an improved experience.
+The Recipe Generator is an innovative tool that helps markets and brands enhance their campaign planning, activation, and insights with the help of AI-powered decision-making. The Recipe AI Data Store gathers information from propietary recipes database, Tastewise (trending recipes), and websites/app navigational data to offer insights into the latest and upcoming trending Recipe content. This allows brands and content marketers to provide their consumers with relevant and useful recipe content for an improved experience.
 
-The Recipe AI Data Store enhances the recipes database by utilizing both first and third-party data to create recipe trends insights. This enables to rank recipes based on trending data for a specific brand and market, which can be used to inform targeting and creation. For instance, if we look at Oatmeal cookies, we will get an overview of trend scores in Tastewise and growth on Earned. Thereby we can identify whether there is an opportunity in promoting and craeting content for Oatmeal cookies in a specific market.
+<p align="center">
+  <img src="./assets/shrimp-comparison.png" alt="Comparison" width="600">
+  <br>
+  <em>Fig. 1: A comparison between a real photograph and a AI-generated one.</em>
+</p>
+
+The Recipe AI Data Store enhances the recipes database by utilizing both first and third-party data to create recipe trends insights. This enables to rank recipes based on trending data for a specific brand and market, which can be used to inform targeting and creation. For instance, if we look at Oatmeal cookies, the system outputs an overview of trend scores in Tastewise and growth on organic channels. Thereby we can identify whether there is an opportunity in promoting and creating content for Oatmeal cookies in that specific market.
 
 ## Architecture
-
-The system is designed as a multi-stage pipeline that first analyzes data to optimize a recipe, then translates that recipe into a final, stylized image. It creates a powerful synergy between data analysis, LLMs (for understanding), and Diffusion Models (for visual creation).
 
 <p align="center">
   <img src="./assets/r2i-scd.png" alt="System Architecture Diagram" width="800">
@@ -65,11 +69,7 @@ We engineered a multi-stage system, starting with data analysis to inform recipe
 - Stage 0: **Trend Analysis & Recipe Optimization**
 - Stage 1: **Foundational Prompt Engineering**
 - Stage 2: **LLM-Powered Prompt Synthesis**
-- Stage 3: **Style-Aware Fine-Tuning**
-
-| AI Type | Model | RAG |
-| :--- | :--- | :--- |
-| Generative AI and Embedding Models | Vertex AI Gemini-Pro and text-embeddings | Yes |
+- Stage 3: **Style Fine-Tuning**
 
 <p align="center">
   <img src="./assets/r2i-layers.png" alt="Modeling Stages" width="500">
