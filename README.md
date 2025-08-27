@@ -113,7 +113,7 @@ For a recipe for "Oriental shrimp," the system transformed the raw data into the
 <p align="center">
   <img src="./assets/r2i-shrimp-comparison.png" alt="Comparison" width="650">
   <br>
-  <em>Fig. 2: A comparison between a real photograph and a AI-generated one.</em>
+  <em>Fig. 4: A comparison between a real photograph and a AI-generated one.</em>
 </p>
 
 **Raw Input Data:**
@@ -143,7 +143,7 @@ This final stage addresses the business need for brand consistency. This answers
 <p align="center">
   <img src="./assets/r2i-pizzette-lora.png" alt="LoRA Pizzette" width="900">
   <br>
-  <em>Fig. 3: Images generated using LoRA fine-tuning on a brand style images.</em>
+  <em>Fig. 5: Images generated using LoRA fine-tuning on a brand style images.</em>
 </p>
 
 ## Usage
