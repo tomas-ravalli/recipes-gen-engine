@@ -148,7 +148,7 @@ This final stage addresses the business need for brand consistency. This answers
 
 ## Usage
 
-The system is designed to be integrated into a content management and R&D platform, acting as both a concept generator and a "virtual photographer."
+The system is designed to be integrated into a content management and R&D platform, acting as both a concept generator and a "virtual photographer".
 
 ### End-to-End Workflow
 
