@@ -113,7 +113,7 @@ For a recipe for "Oriental shrimp," the system transformed the raw data into the
 <p align="center">
   <img src="./assets/r2i-shrimp-comparison.png" alt="Comparison" width="650">
   <br>
-  <em>Fig. 4: A comparison between a real photograph and a AI-generated one.</em>
+  <em>Fig. 4: From baseline to AI-generated oriental shrimp dish.</em>
 </p>
 
 **Raw Input Data:**
