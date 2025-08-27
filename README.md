@@ -35,9 +35,9 @@
 The Recipe Generator is an innovative tool that helps markets and brands enhance their campaign planning, activation, and insights with the help of AI-powered decision-making. The Recipe AI Data Store gathers information from propietary recipes database, Tastewise (trending recipes), and websites/app navigational data to offer insights into the latest and upcoming trending Recipe content. This allows brands and content marketers to provide their consumers with relevant and useful recipe content for an improved experience.
 
 <p align="center">
-  <img src="./assets/shrimp-comparison.png" alt="Comparison" width="600">
+  <img src="./assets/r2i-apple-pie.png" alt="Apple pie" width="600">
   <br>
-  <em>Fig. 1: A comparison between a real photograph and a AI-generated one.</em>
+  <em>Fig. 1: An AI-generated apple bread photograph.</em>
 </p>
 
 The Recipe AI Data Store enhances the recipes database by utilizing both first and third-party data to create recipe trends insights. This enables to rank recipes based on trending data for a specific brand and market, which can be used to inform targeting and creation. For instance, if we look at Oatmeal cookies, the system outputs an overview of trend scores in Tastewise and growth on organic channels. Thereby we can identify whether there is an opportunity in promoting and creating content for Oatmeal cookies in that specific market.
@@ -106,11 +106,15 @@ This stage addressed the challenge of making the images *faithful* to the specif
 | **Process** | The LLM **synthesizes** the recipe information into a concise and effective prompt by: 1. **Ingredient Weighting**: Prioritizing ingredients with a higher weight. 2. **Final State Analysis**: Analyzing the recipe steps to determine the final appearance of an ingredient (e.g., "mashed," "browned"). |
 | **Output**| A structured, weighted prompt that tells the image model not only *what* to include, but how important each element is. |
 
-<details>
-<summary><b>Click to see an example of a synthesized prompt</b></summary>
-</br>
+Below is an **example** of a synthesized prompt.
 
 For a recipe for "Oriental shrimp," the system transformed the raw data into the following detailed prompt, which resulted in a much more accurate image where soy sauce was visible and extraneous ingredients like noodles were removed.
+
+<p align="center">
+  <img src="./assets/r2i-shrimp-comparison.png" alt="Comparison" width="600">
+  <br>
+  <em>Fig. 2: A comparison between a real photograph and a AI-generated one.</em>
+</p>
 
 **Raw Input Data:**
 - **Ingredients:** `["Shrimps", "MAGGI Soy Sauce", "Tomato sauce", "Olive oil", "Onion", ...]`
@@ -125,7 +129,6 @@ Oriental shrimp.
 (Sugar is in the final state of the recipe. :0.01).
 Food photographic style.
 
-</details>
 
 ### Stage 3: Style Fine-Tuning
 
@@ -136,6 +139,12 @@ This final stage addresses the business need for brand consistency. This answers
 | **Model** | A fine-tuning technique known as **LoRA** (Low-Rank Adaptation). |
 | **Process** | The system was fine-tuned on a small dataset (e.g., 18 images) from a specific brand. At generation time, these learned LoRA weights are applied, influencing the output to match the target style. |
 | **Application** | This allows for the creation of different "style models" for each market or brand, which can be easily applied during image generation to ensure a consistent brand aesthetic. |
+
+<p align="center">
+  <img src="./assets/r2i-pizzette-lora.png" alt="LoRA Pizzette" width="600">
+  <br>
+  <em>Fig. 3: Images generated using LoRA fine-tuning on a brand style images.</em>
+</p>
 
 ## Usage
 
