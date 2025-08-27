@@ -83,7 +83,7 @@ This foundational stage answers the question: *"What should we make in the first
 | Aspect | Description |
 | :--- | :--- |
 | **Data Sources** | Ingests data from **Tastewise** and internal **Google Analytics**. |
-| **Process** | The system analyzes this data to identify: 1. **Trending Ingredients**: Which ingredients are seeing a surge in consumer interest. 2. **High-Performing Pairs**: Which ingredient combinations have historically led to high engagement. |
+| **Process** | The system analyzes this data to identify: (1) **Trending Ingredients**: Which ingredients are seeing a surge in consumer interest. (2) **High-Performing Pairs**: Which ingredient combinations have historically led to high engagement. |
 | **Output**| A set of **optimized ingredient combinations** that are predicted to have a higher consumer preference. This output serves as the basis for the recipe that will be visualized. |
 
 ### Stage 1: Foundational Prompt Engineering
@@ -103,7 +103,7 @@ This stage addressed the challenge of making the images *faithful* to the specif
 | Aspect | Description |
 | :--- | :--- |
 | **Model** | An intelligent pipeline using a Large Language Model (**Gemini 2.5**) to process the optimized recipe data. |
-| **Process** | The LLM **synthesizes** the recipe information into a concise and effective prompt by: 1. **Ingredient Weighting**: Prioritizing ingredients with a higher weight. 2. **Final State Analysis**: Analyzing the recipe steps to determine the final appearance of an ingredient (e.g., "mashed," "browned"). |
+| **Process** | The LLM **synthesizes** the recipe information into a concise and effective prompt by: (1) **Ingredient Weighting**: Prioritizing ingredients with a higher weight. (2) **Final State Analysis**: Analyzing the recipe steps to determine the final appearance of an ingredient (e.g., "mashed," "browned"). |
 | **Output**| A structured, weighted prompt that tells the image model not only *what* to include, but how important each element is. |
 
 Below is an **example** of a synthesized prompt.
@@ -154,7 +154,7 @@ The system is designed to be integrated into a content management and R&D platfo
 
 1.  **Trend Analysis & Opportunity Identification**: The system continuously analyzes market and internal data to suggest high-potential recipe concepts or ingredient modifications.
 2.  **Recipe Selection & Optimization**: A user selects a concept. The system provides the optimized ingredient list.
-3.  **Style Selection**: The user selects the target visual style from a library of pre-trained LoRA models (e.g., "Winiary - Poland Style," "Buitoni - Italy Style").
+3.  **Style Selection**: The user selects the target visual style from a library of pre-trained LoRA models.
 4.  **Automated Generation**:
     - The system retrieves the optimized recipe's data.
     - The **Prompt Synthesis Engine** (Stage 2) generates the detailed text prompt.
