@@ -71,8 +71,8 @@ We engineered a multi-stage system, starting with data analysis to inform recipe
 | :--- | :--- | :--- |
 | Generative AI and Embedding Models | Vertex AI Gemini-Pro and text-embeddings | Yes |
 
-<p align="left">
-  <img src="./assets/r2i-layers.png" alt="Modeling Stages" width="275">
+<p align="center">
+  <img src="./assets/r2i-layers.png" alt="Modeling Stages" width="500">
   <br>
   <em>Fig. 3: The layered modeling approach.</em>
 </p>
@@ -147,9 +147,9 @@ The system is designed to be integrated into a content management and R&D platfo
 2.  **Recipe Selection & Optimization**: A user selects a concept. The system provides the optimized ingredient list.
 3.  **Style Selection**: The user selects the target visual style from a library of pre-trained LoRA models (e.g., "Winiary - Poland Style," "Buitoni - Italy Style").
 4.  **Automated Generation**:
-    * The system retrieves the optimized recipe's data.
-    * The **Prompt Synthesis Engine** (Stage 2) generates the detailed text prompt.
-    * The **Image Generation Engine** (Stage 3) uses the prompt and the selected LoRA style to render image variations.
+    - The system retrieves the optimized recipe's data.
+    - The **Prompt Synthesis Engine** (Stage 2) generates the detailed text prompt.
+    - The **Image Generation Engine** (Stage 3) uses the prompt and the selected LoRA style to render image variations.
 5.  **Review and Use**: The user reviews the options and selects the best one for immediate use, reducing the entire creative process to minutes.
 
 This workflow transforms major operational bottlenecks in both R&D and marketing into a streamlined, data-driven process.
@@ -174,7 +174,7 @@ While most of the source code for this project is private, this section outlines
 │   ├── recipe_database.csv          # (Private) Example structured recipe data.
 │   └── trend_data/                  # (Private) Cache for external API data.
 ├── models/
-│   └── lora_weights/                 # (Private) Stores trained LoRA model files.
+│   └── lora_weights/                # (Private) Stores trained LoRA model files.
 │       └── style.safetensors
 ├── notebooks/                       # (Private) Jupyter notebooks for R&D.
 │   ├── 01_trend_analysis.ipynb
