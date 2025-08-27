@@ -155,10 +155,10 @@ The system is designed to be integrated into a content management and R&D platfo
 1.  **Trend Analysis & Opportunity Identification**: The system continuously analyzes market and internal data to suggest high-potential recipe concepts or ingredient modifications.
 2.  **Recipe Selection & Optimization**: A user selects a concept. The system provides the optimized ingredient list.
 3.  **Style Selection**: The user selects the target visual style from a library of pre-trained LoRA models.
-4.  **Automated Generation**:
+4.  **Automated Generation**: </br>
     - The system retrieves the optimized recipe's data.
-    - The **Prompt Synthesis Engine** (Stage 2) generates the detailed text prompt.
-    - The **Image Generation Engine** (Stage 3) uses the prompt and the selected LoRA style to render image variations.
+    - The **Prompt Synthesis Layer** generates the detailed text prompt.
+    - The **Image Generation Layer** uses the prompt and the selected LoRA style to render image variations.
 5.  **Review and Use**: The user reviews the options and selects the best one for immediate use, reducing the entire creative process to minutes.
 
 This workflow transforms major operational bottlenecks in both R&D and marketing into a streamlined, data-driven process.
@@ -169,7 +169,7 @@ The Recipes Optimizer present opportunities for markets to create competitor adv
 
 ## Structure
 
-While most of the source code for this project is private, this section outlines a representative structure for this kind of Generative AI project.
+While most of the source code for this project is private, this section outlines a representative structure for this kind of GenAI project.
 
 ```bash
 /
@@ -185,7 +185,7 @@ While most of the source code for this project is private, this section outlines
 ├── models/
 │   └── lora_weights/                # (Private) Stores trained LoRA model files.
 │       └── style.safetensors
-├── notebooks/                       # (Private) Jupyter notebooks for R&D.
+├── notebooks/                       # (Private) Jupyter notebooks.
 │   ├── 01_trend_analysis.ipynb
 │   ├── 02_prompt_engineering_tests.ipynb
 │   └── 03_lora_fine_tuning.ipynb
