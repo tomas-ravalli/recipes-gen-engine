@@ -43,7 +43,7 @@ The system is designed as a multi-stage pipeline that first analyzes data to opt
 <p align="center">
   <img src="./assets/r2i-scd.png" alt="System Architecture Diagram" width="800">
   <br>
-  <em>Fig. 2: A simplified diagram of the data analysis, recipe optimization, and image generation pipeline.</em>
+  <em>Fig. 2: A simplified diagram of the data analysis, recipe optimization, and generation pipeline.</em>
 </p>
 
 ## Dataset
@@ -67,8 +67,12 @@ We engineered a multi-stage system, starting with data analysis to inform recipe
 - Stage 2: **LLM-Powered Prompt Synthesis**
 - Stage 3: **Style-Aware Fine-Tuning**
 
+| AI Type | Model | RAG |
+| :--- | :--- | :--- |
+| Generative AI and Embedding Models | Vertex AI Gemini-Pro and text-embeddings | Yes |
+
 <p align="left">
-  <img src="./assets/model-stages.png" alt="Modeling Stages" width="275">
+  <img src="./assets/r2i-layers.png" alt="Modeling Stages" width="275">
   <br>
   <em>Fig. 3: The layered modeling approach.</em>
 </p>
@@ -98,7 +102,7 @@ This stage addressed the challenge of making the images *faithful* to the specif
 
 | Aspect | Description |
 | :--- | :--- |
-| **Model** | A pipeline using **Gemini 2.5** to process the optimized recipe data. |
+| **Model** | An intelligent pipeline using a Large Language Model (**Gemini 2.5**) to process the optimized recipe data. |
 | **Process** | The LLM **synthesizes** the recipe information into a concise and effective prompt by: 1. **Ingredient Weighting**: Prioritizing ingredients with a higher weight. 2. **Final State Analysis**: Analyzing the recipe steps to determine the final appearance of an ingredient (e.g., "mashed," "browned"). |
 | **Output**| A structured, weighted prompt that tells the image model not only *what* to include, but how important each element is. |
 
@@ -123,7 +127,7 @@ Food photographic style.
 
 </details>
 
-### Stage 3: Style-Aware Fine-Tuning
+### Stage 3: Style Fine-Tuning
 
 This final stage addresses the business need for brand consistency. This answers the question: *"How do we make the image look like it was taken by **our** photographers?"*
 
@@ -171,8 +175,7 @@ While most of the source code for this project is private, this section outlines
 │   └── trend_data/                  # (Private) Cache for external API data.
 ├── models/
 │   └── lora_weights/                 # (Private) Stores trained LoRA model files.
-│       ├── buitoni_style.safetensors
-│       └── winiary_style.safetensors
+│       └── style.safetensors
 ├── notebooks/                       # (Private) Jupyter notebooks for R&D.
 │   ├── 01_trend_analysis.ipynb
 │   ├── 02_prompt_engineering_tests.ipynb
