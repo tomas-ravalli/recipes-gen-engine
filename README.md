@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License">
 </p>
 
-> An AI-powered system to optimize product recipes and generate high-quality, on-brand food images. **Objective:** To reduce concept-to-testing time by identifying optimal ingredient combinations and replace traditional food photography with a scalable, automated AI solution for a top CPG brand's global recipe platform.
+An AI-powered system to optimize product recipes and generate high-quality, on-brand food images. **Objective:** To reduce concept-to-testing time by identifying optimal ingredient combinations and replace traditional food photography with a scalable, automated AI solution for a top CPG brand's global recipe platform.
 
 ### Outline
 
