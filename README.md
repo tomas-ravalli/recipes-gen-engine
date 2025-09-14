@@ -1,4 +1,6 @@
-![My Cover](./assets/r2i-cover.jpeg)
+<p align="center">
+<img src="./assets/r2i-cover.jpeg">
+</p>
 
 # GenAI for Optimal Recipe Creation at Scale
 
